@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Enhanced Simple Page</title>
+  <meta name="description" content="A clean HTML starter page with enhanced features." />
+  <style>
+    :root {
+      --max-width: 900px;
+      --accent: #2563eb;
+      --accent-dark: #1e40af;
+      --muted: #6b7280;
+      --light-bg: #f8fafc;
+      --text: #0f172a;
+      --border: #e2e8f0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      background: var(--light-bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: var(--max-width);
+      width: 100%;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(2, 6, 23, 0.08);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+    
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    
+    header p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+    
+    nav {
+      display: flex;
+      gap: 16px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      padding: 6px 0;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    
+    nav a:hover {
+      color: var(--accent-dark);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    section {
+      scroll-margin-top: 20px;
+    }
+    
+    h2 {
+      font-size: 1.6rem;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--accent);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    code {
+      background-color: var(--light-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.95em;
+    }
+    
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+      align-self: flex-start;
+    }
+    
+    button:hover {
+      background: var(--accent-dark);
+    }
+    
+    ul {
+      padding-left: 24px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 500px;
+    }
+    
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-weight: 500;
+    }
+    
+    input, textarea {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    footer {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      body {
+        padding: 16px;
+      }
+      
+      .container {
+        padding: 24px;
+        gap: 24px;
+      }
+      
+      header h1 {
+        font-size: 1.6rem;
+      }
+      
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+    
+    /* Animation for section appearance */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    section {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
+  <div class="container" role="main" id="main">
+    <header>
+      <h1>My Enhanced Simple Page</h1>
+      <p>Clean starter template with improved styling, accessibility, and user experience.</p>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about" class="hero" aria-labelledby="about-heading">
+      <h2 id="about-heading">Welcome</h2>
+      <p>This section introduces the page. Using semantic HTML tags like <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;nav&gt;</code> improves both accessibility and SEO.</p>
+      <p>I've enhanced the original design with better spacing, subtle animations, and improved form styling while maintaining the clean aesthetic.</p>
+      <button onclick="showWelcome()">Click me</button>
+    </section>
+
+    <section id="features" aria-labelledby="features-heading">
+      <h2 id="features-heading">Features</h2>
+      <ul>
+        <li>Fully responsive design with mobile-friendly breakpoints</li>
+        <li>Semantic HTML structure (header, nav, main, footer)</li>
+        <li>Enhanced accessibility features including skip link</li>
+        <li>Improved form styling with focus states</li>
+        <li>Subtle animations and transition effects</li>
+        <li>Better color scheme with consistent variables</li>
+      </ul>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <form id="contact-form" aria-label="Contact form">
+        <label>
+          Name
+          <input type="text" name="name" required placeholder="Your name" />
+        </label>
+        
+        <label>
+          Email
+          <input type="email" name="email" required placeholder="Your email address" />
+        </label>
+        
+        <label>
+          Message
+          <textarea name="message" rows="4" required placeholder="How can we help you?"></textarea>
+        </label>
+        
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>Made with ❤️ — <small>© <span id="year"></span> All rights reserved</small></p>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Form handling
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simple form validation
+      const name = this.elements.name.value.trim();
+      const email = this.elements.email.value.trim();
+      const message = this.elements.message.value.trim();
+      
+      if (name && email && message) {
+        // In a real application, you would send the form data to a server
+        alert(`Thank you, ${name}! Your message has been received.`);
+        this.reset();
+      } else {
+        alert('Please fill in all fields.');
+      }
+    });
+    
+    // Welcome button function
+    function showWelcome() {
+      alert('Hello! Welcome to our enhanced page.');
+    }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
