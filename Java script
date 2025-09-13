@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Concepts Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #f8f8f8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #ff9800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: #ff9800;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: #ff9800;
+        }
+        
+        .card-content {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .code-container {
+            background: #1e1e1e;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .code-keyword {
+            color: #569cd6;
+        }
+        
+        .code-function {
+            color: #dcdcaa;
+        }
+        
+        .code-string {
+            color: #ce9178;
+        }
+        
+        .code-comment {
+            color: #6a9955;
+        }
+        
+        .code-number {
+            color: #b5cea8;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ff9800;
+            color: #2c5364;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #ffa726;
+            transform: scale(1.05);
+        }
+        
+        .output-container {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .output-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff9800;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Concepts Showcase</h1>
+            <p class="subtitle">Explore fundamental JavaScript programming concepts with interactive examples. Click the "Run Example" buttons to see the code in action.</p>
+        </header>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-header">
+                    <i class="card-icon fas fa-variable"></i>
+                    <h2 class="card-title">Variables & Data Types</h2>
+                </div>
+                <div class="card-content">
+                    <p>JavaScript has dynamic types. The same variable can be used to hold different data types.</p>
+                    <div class="code-container">
+                        <span class="code-keyword">let</span> name = <span class="code-string">"John"</span>; <span class="code-comment">// String</span><br>
+                        <span class="code-keyword">const</span> age = 30; <span class="code-comment">// Number</span><br>
+                        <span class="code-keyword">let</span> isStudent = <span class="code-keyword">true</span>; <span class="code-comment">// Boolean</span><br>
+                        <span class="code-keyword">let</span> fruits = [<span class="code-string">"Apple"</span>, <span class="code-string">"Banana"</span>]; <span class="code-comment">// Array</span><br>
+                        <span class="code-keyword">let</span> person = {firstName:<span class="code-string">"Jane"</span>, lastName:<span class="code-string">"Doe"</span>}; <span class="code-comment">// Object</span>
+                    </div>
+                    <button class="btn" onclick="runExample('variablesExample')">Run Example</button>
+                    <div id="variablesExample" class="output-container">
+                        <div class="output-title">Output:</div>
+                        <div id="variablesOutput"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="card-icon fas fa-code"></i>
+                    <h2 class="card-title">Functions</h2>
+                </div>
+                <div class="card-content">
+                    <p>JavaScript functions are blocks of code designed to perform a particular task.</p>
+                    <div class="code-container">
+                        <span class="code-comment">// Function declaration</span><br>
+                        <span class="code-keyword">function</span> <span class="code-function">greet</span>(name) {<br>
+                        &nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-string">"Hello, "</span> + name + <span class="code-string">"!"</span>;<br>
+                        }<br><br>
+                        <span class="code-comment">// Arrow function (ES6)</span><br>
+                        <span class="code-keyword">const</span> multiply = (a, b) => a * b;
+                    </div>
+                    <button class="btn" onclick="runExample('functionsExample')">Run Example</button>
+                    <div id="functionsExample" class="output-container">
+                        <div class="output-title">Output:</div>
+                        <div id="functionsOutput"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="card-icon fas fa-sync-alt"></i>
+                    <h2 class="card-title">Conditionals & Loops</h2>
+                </div>
+                <div class="card-content">
+                    <p>Conditional statements and loops control the flow of execution in JavaScript.</p>
+                    <div class="code-container">
+                        <span class="code-comment">// If statement</span><br>
+                        <span class="code-keyword">if</span> (time < 12) {<br>
+                        &nbsp;&nbsp;greeting = <span class="code-string">"Good morning"</span>;<br>
+                        } <span class="code-keyword">else if</span> (time < 18) {<br>
+                        &nbsp;&nbsp;greeting = <span class="code-string">"Good afternoon"</span>;<br>
+                        } <span class="code-keyword">else</span> {<br>
+                        &nbsp;&nbsp;greeting = <span class="code-string">"Good evening"</span>;<br>
+                        }<br><br>
+                        <span class="code-comment">// For loop</span><br>
+                        <span class="code-keyword">for</span> (<span class="code-keyword">let</span> i = 0; i < 5; i++) {<br>
+                        &nbsp;&nbsp;console.log(i);<br>
+                        }
+                    </div>
+                    <button class="btn" onclick="runExample('conditionalsExample')">Run Example</button>
+                    <div id="conditionalsExample" class="output-container">
+                        <div class="output-title">Output:</div>
+                        <div id="conditionalsOutput"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="card-icon fas fa-cube"></i>
+                    <h2 class="card-title">Objects & Arrays</h2>
+                </div>
+                <div class="card-content">
+                    <p>Objects and arrays are fundamental data structures in JavaScript for storing collections of data.</p>
+                    <div class="code-container">
+                        <span class="code-comment">// Object example</span><br>
+                        <span class="code-keyword">let</span> car = {<br>
+                        &nbsp;&nbsp;make: <span class="code-string">"Toyota"</span>,<br>
+                        &nbsp;&nbsp;model: <span class="code-string">"Camry"</span>,<br>
+                        &nbsp;&nbsp;year: 2020,<br>
+                        &nbsp;&nbsp;start: <span class="code-keyword">function</span>() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(<span class="code-string">"Engine started"</span>);<br>
+                        &nbsp;&nbsp;}<br>
+                        };<br><br>
+                        <span class="code-comment">// Array example</span><br>
+                        <span class="code-keyword">let</span> colors = [<span class="code-string">"red"</span>, <span class="code-string">"green"</span>, <span class="code-string">"blue"</span>];
+                    </div>
+                    <button class="btn" onclick="runExample('objectsExample')">Run Example</button>
+                    <div id="objectsExample" class="output-container">
+                        <div class="output-title">Output:</div>
+                        <div id="objectsOutput"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="card-icon fas fa-window-restore"></i>
+                    <h2 class="card-title">DOM Manipulation</h2>
+                </div>
+                <div class="card-content">
+                    <p>The Document Object Model (DOM) represents the page structure and can be manipulated with JavaScript.</p>
+                    <div class="code-container">
+                        <span class="code-comment">// Changing text content</span><br>
+                        document.getElementById(<span class="code-string">"demo"</span>).innerHTML = <span class="code-string">"Hello JavaScript!"</span>;<br><br>
+                        <span class="code-comment">// Handling events</span><br>
+                        <span class="code-keyword">const</span> btn = document.querySelector(<span class="code-string">"button"</span>);<br>
+                        btn.addEventListener(<span class="code-string">"click"</span>, <span class="code-keyword">function</span>() {<br>
+                        &nbsp;&nbsp;alert(<span class="code-string">"Button clicked!"</span>);<br>
+                        });
+                    </div>
+                    <button class="btn" onclick="runExample('domExample')">Run Example</button>
+                    <div id="domExample" class="output-container">
+                        <div class="output-title">Output:</div>
+                        <div id="domOutput"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="card-icon fas fa-exchange-alt"></i>
+                    <h2 class="card-title">Async JavaScript</h2>
+                </div>
+                <div class="card-content">
+                    <p>JavaScript uses asynchronous programming to handle operations that take time, like API calls.</p>
+                    <div class="code-container">
+                        <span class="code-comment">// Using promises</span><br>
+                        fetch(<span class="code-string">'https://api.example.com/data'</span>)<br>
+                        &nbsp;&nbsp;.then(response => response.json())<br>
+                        &nbsp;&nbsp;.then(data => console.log(data))<br>
+                        &nbsp;&nbsp;.catch(error => console.error(<span class="code-string">'Error:'</span>, error));<br><br>
+                        <span class="code-comment">// Async/await (ES8)</span><br>
+                        <span class="code-keyword">async function</span> <span class="code-function">getData</span>() {<br>
+                        &nbsp;&nbsp;<span class="code-keyword">try</span> {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> fetch(<span class="code-string">'https://api.example.com/data'</span>);<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> data = <span class="code-keyword">await</span> response.json();<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.log(data);<br>
+                        &nbsp;&nbsp;} <span class="code-keyword">catch</span> (error) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;console.error(<span class="code-string">'Error:'</span>, error);<br>
+                        &nbsp;&nbsp;}<br>
+                        }
+                    </div>
+                    <button class="btn" onclick="runExample('asyncExample')">Run Example</button>
+                    <div id="asyncExample" class="output-container">
+                        <div class="output-title">Output:</div>
+                        <div id="asyncOutput"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>JavaScript Concepts Showcase | Demonstrating Key JavaScript Programming Principles</p>
+            <p>Note: This is a simulated environment. The examples are running in JavaScript for demonstration purposes.</p>
+        </footer>
+    </div>
+
+    <script>
+        function runExample(exampleId) {
+            const outputContainer = document.getElementById(exampleId);
+            const outputElement = document.getElementById(exampleId.replace('Example', 'Output'));
+            
+            // Show the output container
+            outputContainer.style.display = 'block';
+            
+            // Clear previous output
+            outputElement.innerHTML = '';
+            
+            // Simulate different outputs based on the example
+            switch(exampleId) {
+                case 'variablesExample':
+                    simulateTyping(outputElement, 
+                        'let name = "John";\n' +
+                        'const age = 30;\n' +
+                        'let isStudent = true;\n\n' +
+                        'Values:\n' +
+                        'name: John (string)\n' +
+                        'age: 30 (number)\n' +
+                        'isStudent: true (boolean)'
+                    );
+                    break;
+                case 'functionsExample':
+                    simulateTyping(outputElement, 
+                        '// Function call: greet("Alice")\n' +
+                        'Hello, Alice!\n\n' +
+                        '// Arrow function call: multiply(5, 7)\n' +
+                        '35'
+                    );
+                    break;
+                case 'conditionalsExample':
+                    simulateTyping(outputElement, 
+                        '// If statement with time = 14\n' +
+                        'Good afternoon\n\n' +
+                        '// For loop from 0 to 4\n' +
+                        '0\n1\n2\n3\n4'
+                    );
+                    break;
+                case 'objectsExample':
+                    simulateTyping(outputElement, 
+                        '// Accessing object properties\n' +
+                        'car.make: Toyota\n' +
+                        'car.model: Camry\n\n' +
+                        '// Calling object method\n' +
+                        'car.start(): Engine started\n\n' +
+                        '// Accessing array elements\n' +
+                        'colors[0]: red\n' +
+                        'colors[1]: green\n' +
+                        'colors[2]: blue'
+                    );
+                    break;
+                case 'domExample':
+                    simulateTyping(outputElement, 
+                        '// Changing text content\n' +
+                        'Element with id "demo" now shows: "Hello JavaScript!"\n\n' +
+                        '// Event handling\n' +
+                        'Button click
